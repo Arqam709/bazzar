@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cart List */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Empty Cart Message */
+        p {
+            text-align: center;
+            color: #777;
+        }
+
+        /* Total Price */
+        h3 {
+            text-align: right;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        /* Button Styling */
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+
+        <h2>Your Cart:</h2>
+        <ul>
+            {% for product in cart %}
+            <li>
+                <span>{{ product.name }}</span>
+                <span>${{ product.price }}</span>
+            </li>
+            {% else %}
+            <p>Your cart is empty.</p>
+            {% endfor %}
+        </ul>
+
+        <h3>Total: ${{ total_price }}</h3> <!-- Displaying the total price -->
+
+        <form action="{{ url_for('payment') }}" method="POST">
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+</body>
+</html>

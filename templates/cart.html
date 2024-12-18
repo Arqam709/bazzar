@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for product in cart %}
+        <li>
+            <h2>{{ product.name }}</h2>
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+            <p>Price: ${{ product.price }}</p>
+        </li>
+        {% else %}
+        <p>Your cart is empty.</p>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

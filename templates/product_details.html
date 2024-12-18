@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }} - Details</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+    <p>Price: ${{ product.price }}</p>
+    <p>Description: Detailed description of the product goes here.</p>
+    <a href="{{ url_for('add_to_cart', product_id=product.id) }}">Add to Cart</a>
+    <a href="{{ url_for('cart') }}">Go to Cart</a>
+</body>
+</html>
+
+
+
+
